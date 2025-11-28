@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Commande de Pizza</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<header class="header">
+    <h1>Pizzeria</h1>
+    <nav>
+	<a class="bouton-header" href="{{ url_for('accueil') }}">Accueil</a>
+    </nav>
+</header>
+
+<body>
+<div class="container">
+
+    <h1> Votre commande a été créé avec succès</h1>
+
+    <div class="resume_commandes">
+        <h2 >Résumer de votre commandes :</h2>
+        
+        
+        <p> Croute: {{ croute }}</p>
+        <p> Sauce: {{ sauce }}</p>
+        <p> Garnitures: </p>
+        <ul>
+            {% for g in garnitures %}
+                <li> {{ g }} </li> 
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>

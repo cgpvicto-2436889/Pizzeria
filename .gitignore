@@ -1,0 +1,29 @@
+# Fichiers et dossiers à ignorer par Git
+
+# Environnement virtuel Python
+projet_long_env/
+.projet_long_env/
+
+# Fichiers de cache et de compilation
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# Fichiers de configuration sensibles
+.flaskenv
+
+# Fichiers de base de données (si ce n'est pas déjà géré par la base de données elle-même)
+*.sqlite3
+*.db
+
+# Fichiers logs
+*.log
+
+# Dossiers temporaires ou de build
+build/
+dist/
+
+# Fichiers spécifiques au système d'exploitation
+.DS_Store
+Thumbs.db

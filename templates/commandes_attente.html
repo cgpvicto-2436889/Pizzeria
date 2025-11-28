@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Pizzeria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="header">
+    <h1>Pizzeria</h1>
+    <nav>
+	<a class="bouton-header" href="{{ url_for('accueil') }}">Accueil</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Commandes en attentes</h2>
+    
+    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; text-align: center;">
+        <thead>
+            <tr>
+                <th>Numéro de commande</th>
+                <th>Numéro de téléphone du client</th>
+                <th>Adresse du client</th>
+                <th>Date commande</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for cmd in commandes %}
+                <tr>
+                    <td>{{ cmd.id }}</td>
+                    <td>{{ cmd.telephone }}</td>
+                    <td>{{ cmd.adresse }}</td>
+                    <td>{{ cmd.date_commande }}</td>
+                    <td>
+                        <form action="{{ url_for('livrer_commande', id=cmd.id) }}" method="POST">
+                            <button type="submit" class="bouton-resume">Marquer comme livrée</button>
+                        </form>   
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

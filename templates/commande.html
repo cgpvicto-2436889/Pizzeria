@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Commande de Pizza</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<header class="header">
+    <h1>Pizzeria</h1>
+    <nav>
+	<a class="bouton-header" href="{{ url_for('accueil') }}">Accueil</a>
+    </nav>
+</header>
+
+<body>
+<div class="container">
+
+    <h1>Commande de pizza</h1>
+
+    <form method="POST" action="{{ url_for('confirmer') }}" id="form-commande">
+        
+        <fieldset>
+            <legend>Informations du client</legend>
+
+            <div class="form-group">
+                <label for="nom">Nom complet</label>
+                <input type="text" id="nom" name="nom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telephone">Numéro de téléphone</label>
+                <input type="tel" id="telephone" name="telephone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="adresse">Adresse de livraison</label>
+                <textarea id="adresse" name="adresse" rows="3" required></textarea>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Personnalisation de la pizza</legend>
+            
+            <div class="form-group">
+                <label>Type de croûte</label>
+                {% for c in croutes %}
+                    <label>
+                        <input type="radio" name="croute" value="{{ c.id }}" required>
+                        {{ c.nom }}
+                    </label><br>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>Sauce</label>
+                {% for s in sauces %}
+                    <label>
+                        <input type="radio" name="sauce" value="{{ s.id }}" required>
+                        {{ s.nom }}
+                    </label><br>
+                {% endfor %}
+            </div> 
+
+            <div class="form-group">
+                <label>Garnitures (maximum 4)</label>
+                <div class="garnitures">
+                {% for g in garnitures %}
+                    <label>
+                        <input type="checkbox" name="garnitures" value="{{ g.id }}">
+                        {{ g.nom }}
+                    </label><br>
+                {% endfor %}
+                </div>
+            </div>
+
+        </fieldset>
+
+        <div class="buttons">
+            <button type="submit">Confirmer la commande</button>
+        </div>
+
+        <div id="resume" class="resume" style="display:none;"></div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

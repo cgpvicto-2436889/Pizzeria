@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Pizzeria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="header">
+    <h1>Pizzeria</h1>
+    <nav>
+	<a class="bouton-header" href="{{ url_for('accueil') }}">Accueil</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Bienvenue dans la pizzeria</h2>
+
+    <p>
+        Prenez votre commande  
+    </p>
+
+    <div class="home-actions">
+        <a class="big-button" href="commande">➕ Nouvelle commande</a>
+        <a class="big-button" href="commandes_attente">📦 Commandes en attente</a>
+    </div>
+</div>
+
+</body>
+</html>
